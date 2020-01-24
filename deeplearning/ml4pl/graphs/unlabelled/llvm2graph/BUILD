@@ -137,13 +137,3 @@ py_library(
         "//third_party/py/numpy",
     ],
 )
-
-py_test(
-    name = "node_encoder_test",
-    srcs = ["node_encoder_test.py"],
-    deps = [
-        ":node_encoder",
-        "//deeplearning/ml4pl/graphs:programl",
-        "//labm8/py:test",
-    ],
-)
