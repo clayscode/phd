@@ -830,3 +830,29 @@ http_archive(
     strip_prefix = "black-2spaces-8f1fe951bcade3792f586eb52d45e38a6428c0fd",
     urls = ["https://github.com/ChrisCummins/black-2spaces/archive/8f1fe951bcade3792f586eb52d45e38a6428c0fd.zip"],
 )
+
+# MNIST dataset
+
+http_file(
+    name = "mnist_train_images",
+    sha256 = "440fcabf73cc546fa21475e81ea370265605f56be210a4024d2ca8f203523609",
+    urls = ["http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz"],
+)
+
+http_file(
+    name = "mnist_train_labels",
+    sha256 = "3552534a0a558bbed6aed32b30c495cca23d567ec52cac8be1a0730e8010255c",
+    urls = ["http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz"],
+)
+
+http_file(
+    name = "mnist_test_images",
+    sha256 = "8d422c7b0a1c1c79245a5bcf07fe86e33eeafee792b84584aec276f5a2dbc4e6",
+    urls = ["http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz"],
+)
+
+http_file(
+    name = "mnist_test_labels",
+    sha256 = "f7ae60f92e00ec6debd23a6088c31dbd2371eca3ffa0defaefb259924204aec6",
+    urls = ["http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz"],
+)
