@@ -200,3 +200,22 @@ cc_test(
         "//labm8/cpp:test",
     ],
 )
+
+cc_test(
+    name = "396",
+    srcs = ["396.cc"],
+    deps = [
+        "//labm8/cpp:logging",
+        "//labm8/cpp:string",
+        "//labm8/cpp:test",
+    ],
+)
+
+cc_test(
+    name = "398",
+    srcs = ["398.cc"],
+    deps = [
+        "//labm8/cpp:logging",
+        "//labm8/cpp:test",
+    ],
+)
