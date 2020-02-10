@@ -17,11 +17,17 @@
 // limitations under the License.
 #pragma once
 
+#include <vector>
+
 #include "absl/container/flat_hash_map.h"
 #include "deeplearning/ml4pl/graphs/programl.pb.h"
 #include "labm8/cpp/string.h"
 
 namespace ml4pl {
+
+// An <entry, exits> pair which records the node numbers for a function's entry
+// and exit statement nodes, respectively.
+using FunctionEntryExits = std::pair<size_t, std::vector<size_t>>;
 
 // A module for constructing a single program graph.
 class GraphBuilder {
@@ -56,6 +62,10 @@ class GraphBuilder {
 
   size_t NextNodeNumber() const { return graph_.node_size(); }
 
+  // Add outgoing and return call edges from a node to a function.
+  void AddCallEdges(const size_t callingNode,
+                    const FunctionEntryExits& calledFunction);
+
  private:
   ProgramGraph graph_;
 
@@ -66,10 +76,22 @@ class GraphBuilder {
       const std::vector<std::vector<std::pair<size_t, int>>>& adjacencies,
       const Edge::Flow& flow, std::vector<bool>* visitedNodes);
 
+  // Insert the string into the strings table, or return its value if already
+  // present.
+  int AddString(const string& s);
+
+  // Return the string from the strings table at the given index. This CHECK
+  // fails if the requested index is out of bound.
+  const string& GetString(int index) const;
+
   // Adjacency lists.
   std::vector<std::vector<size_t>> control_adjacencies_;
   std::vector<std::vector<std::pair<size_t, int>>> data_reverse_adjacencies_;
   std::vector<std::vector<size_t>> call_adjacencies_;
+
+  // A map from unique strings to their position in the flattened string list.
+  // E.g. {"a": 0, "b": 1} flattens to the strings list ["a", "b"].
+  absl::flat_hash_map<string, int> strings_;
 
   bool finalized_;
 };
