@@ -201,6 +201,7 @@ cc_library(
     deps = [
         ":string",
         ":stringpiece",
+        "@fmt",
     ],
 )
 
