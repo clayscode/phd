@@ -56,6 +56,12 @@ class GraphBuilder {
 
   size_t NextNodeNumber() const { return graph_.node_size(); }
 
+  // Return a mutable pointer to the graph protocol buffer.
+  ProgramGraph* GetMutableProgramGraph() { return &graph_; }
+
+  // Return the graph protocol buffer.
+  const ProgramGraph& GetProgramGraph() const { return graph_; }
+
  private:
   ProgramGraph graph_;
 
