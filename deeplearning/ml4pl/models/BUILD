@@ -67,6 +67,7 @@ py_library(
 py_library(
     name = "checkpoints",
     srcs = ["checkpoints.py"],
+    visibility = ["//visibility:public"],
     deps = [
         ":epoch",
         "//deeplearning/ml4pl:run_id",
@@ -139,7 +140,7 @@ py_binary(
 py_library(
     name = "epoch",
     srcs = ["epoch.py"],
-    visibility = ["//deeplearning/ml4pl/models:__subpackages__"],
+    visibility = ["//visibility:public"],
     deps = [
         ":batch",
         "//labm8/py:app",
@@ -245,7 +246,7 @@ py_test(
 py_library(
     name = "logger",
     srcs = ["logger.py"],
-    visibility = ["//deeplearning/ml4pl/models:__subpackages__"],
+    visibility = ["//visibility:public"],
     deps = [
         ":batch",
         ":checkpoints",
