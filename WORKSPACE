@@ -856,3 +856,21 @@ http_file(
     sha256 = "f7ae60f92e00ec6debd23a6088c31dbd2371eca3ffa0defaefb259924204aec6",
     urls = ["http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz"],
 )
+
+# OpenSSL.
+# https://www.openssl.org/
+
+new_local_repository(
+    name = "openssl_darwin",
+    build_file = "//:third_party/openssl.BUILD",
+    path = "/usr/local/opt/openssl",
+)
+
+# The C++ connector for PostgreSQL.
+# https://www.postgresql.org/docs/6.5/libpqplusplus.htm
+
+new_local_repository(
+    name = "libpqxx_darwin",
+    build_file = "//:third_party/libpqxx.BUILD",
+    path = "/usr/local/opt/libpqxx",
+)
